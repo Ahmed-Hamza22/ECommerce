@@ -86,7 +86,7 @@ export class WishlistService {
 
   favToggle(id:string, e:Event):void{
     e.stopPropagation();
-    if(this.favouriteListIDs.includes(id)){
+    if(this.favouriteListIDs?.includes(id)){
       this.removeFromFav(id);
     }else{
       this.addToFav(id);
