@@ -1,0 +1,10 @@
+.myCategory{
+  border: solid 1px gray;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all .5s;
+}
+
+.myCategory:hover{
+  box-shadow: 1px 1px 10px #4fa74f;
+}

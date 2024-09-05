@@ -1,0 +1,15 @@
+<section class="py-5">
+  <!-- <h1 class="fw-bolder text-center text-main h2 mb-4">All-Brands</h1> -->
+  <div class="container">
+    <div class="row g-4">
+      @for (b of brandsList; track b._id) {
+        <div class="col-md-3">
+          <div class="brand-card border rounded-2">
+            <img [src]="b.image" [alt]="b.name" class="w-100 rounded-2">
+            <h6 class="text-center mb-4 fw-semibold">{{b.name}}</h6>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

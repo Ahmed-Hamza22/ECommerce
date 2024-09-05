@@ -1,0 +1,58 @@
+  <section class="mt-3" *ngIf="productDetails">
+    <h1 class="text-main text-center">
+      {{'details.details' | translate}}
+    </h1>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <div>
+            
+            <owl-carousel-o [options]="customOptionsDetails">
+                @for (image of productDetails.images; track $index) {
+                  <ng-template carouselSlide>
+                    <img [src]="image" [alt]="productDetails.title" class="w-100">
+                  </ng-template>
+                }
+            </owl-carousel-o>
+            
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div>
+            <h2>{{productDetails.title}}</h2>
+            <p class="text-muted">{{productDetails.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <strong>{{productDetails.category.name}} → <span class="fw-lighter">{{productDetails.subcategory[0].name}}</span></strong>
+              <div class="d-flex justify-content-center align-items-center">
+                <div>
+                  <i (click)="_WishlistService.favToggle(productDetails.id, $event)" [class.bg-fav]="_WishlistService.favouriteListIDs.includes(productDetails.id)" class="fa-solid fa-heart fa-2xl text-secondary cursor-pointer me-2"></i>
+                </div>
+                <img width="70px"  [src]="productDetails.brand.image" [alt]="productDetails.brand.name" [title]="productDetails.brand.name">
+              </div>
+            </div>
+    
+            <div class="d-flex justify-content-between align-items-center">
+              <span>{{productDetails.price}} EGP</span>
+              <div>
+                @for (num of [1,2,3,4,5].slice(0,productDetails.ratingsAverage); track $index) {
+                  <span> <i class="fas fa-star rating-color me-1"></i> </span>
+                }
+                @if (productDetails.ratingsAverage % 1 !== 0) {
+                  <i [ngStyle]="{
+                    'background': 'linear-gradient(to right, #ffc908 ' 
+                    + (productDetails.ratingsAverage % 1) * 100 + '%, #e8e6e6 ' 
+                    + (productDetails.ratingsAverage % 1) * 100 + '%)',
+                    '-webkit-background-clip': 'text',
+                    '-webkit-text-fill-color': 'transparent'
+                  }"  class="fa-solid fa-star me-1"></i>
+                }
+                <span class="text-muted">{{productDetails.ratingsAverage}}</span>
+              </div>
+            </div>
+            <button (click)="addToCart(productDetails._id)" class="btn-main w-100 mt-1">{{'cart.cart' | translate}}</button>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+  <section>

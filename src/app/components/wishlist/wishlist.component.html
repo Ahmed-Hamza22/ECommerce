@@ -1,0 +1,25 @@
+<section class="bg-main-light rounded-4 shadow p-4 my-3 px-5">
+  <!-- <h1 class="h2 text-center">Favourites</h1> -->
+  @for (fav of _WishlistService.wishList; track fav._id) {
+    <div class="row my-1 border-bottom align-items-center">
+      <div class="col-md-1">
+        <img class="w-100 rounded-2 mb-1" [src]="fav.imageCover" [alt]="fav.title">
+      </div>
+      <div class="col-md-11">
+        <div class="row align-items-center">
+          <div class="col-md-10">
+            <div>
+              <h3 class="h5 m-0">{{fav.title}}</h3>
+              <p class="text-main my-2">{{fav.price | currency : 'GBP' }}</p>
+              <i [swal]="{title:'Are You Sure?', text:'Your will remove this product from your wishList!', showCancelButton: true, confirmButtonColor:'#DD6B55'}" (confirm)="_WishlistService.removeFromFav(fav._id)" class="fas fa-trash text-danger cursor-pointer"></i>
+              <!-- <i [swal]="['Are You Sure?', 'Your will remove this product from your wishList!', 'warning']" (confirm)="removeItem(item.product.id)" class="fas fa-trash text-danger cursor-pointer"></i> -->
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button (click)="addToCart(fav._id)" class="btn-main">{{'cart.cart' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</section>

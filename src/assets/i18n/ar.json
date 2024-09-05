@@ -1,0 +1,40 @@
+{
+
+  "navbar":{
+    "home" : "الرئيسية",
+    "products" : "المنتجات",
+    "categories" : "الأقسام",
+    "brands" : "العلامات التجارية",
+    "logout" : "تسجيل الخروج",
+    "signup" : "التسجيل",
+    "login" : "تسجيل الدخول",
+    "lang" : "اللغة",
+    "wishlist" : "المفضلة"
+  },
+
+    "home":{
+      "popular categories" : "الأقسام الرائجة",
+      "popular products" : " المنتجات الرائجة",
+      "Woman Shawl":"شال إمرأة",
+      "Get The FreshCart App" : "أي كلام",
+      "email" : "البريد"
+    },
+
+    "footer":{
+    "Get The FreshCart App" : "احصل على فريش كارت الآن",
+    "paragraph" : "سوف نرسل لك رابط ، قم بفتحه على هاتفك للتحميل",
+    "Payment partners" : "شركائنا المميزون",
+    "footerGet" : "احصل على التوصيلات معنا",
+    "btn" : "شارك رابط التطبيق"
+  },
+
+  "cart":{
+    "cart" : "أضف إلى السلة",
+    "shopcart" : "سلة المشتريات"
+  },
+
+  "details" :{
+    "details" : "تفاصيل المنتج"
+  }
+
+}

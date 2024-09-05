@@ -1,0 +1,60 @@
+<section class="bg-main-light shadow rounded-4 p-3 my-2 w-75 mx-auto">
+  <h1 class="h2 text-center">Shippig Address</h1>
+
+  <form [formGroup]="orderForm" (ngSubmit)="cashOrderSubmit()">
+
+    <div class="my-1">
+      <label for="details">Your Address Details :</label>
+      <textarea [ngClass]="{
+        'is-valid': !orderForm.get('details')?.invalid && (orderForm.get('details')?.touched || orderForm.get('details')?.dirty),
+        'is-invalid': orderForm.get('details')?.invalid && (orderForm.get('details')?.touched || orderForm.get('details')?.dirty) }" formControlName="details" id="details" placeholder="Write your address here..." class="form-control mt-1"></textarea>
+              @if (orderForm.get('details')?.invalid && (orderForm.get('details')?.touched || orderForm.get('details')?.dirty)) {
+                <div class="mt-2">
+                  @if (orderForm.get('details')?.getError('required')) {
+                    <p class="p-2 alert alert-danger">Details is required</p>
+                  }@else if (orderForm.get('details')?.getError('minlength')) {
+                    <p class="p-2 alert alert-danger">Details is too short</p>
+                  }
+                </div>
+              }
+    </div>
+
+    <div class="my-1">
+      <label for="phone">Phone :</label>
+      <input [ngClass]="{
+        'is-valid': !orderForm.get('phone')?.invalid && (orderForm.get('phone')?.touched || orderForm.get('phone')?.dirty),
+        'is-invalid': orderForm.get('phone')?.invalid && (orderForm.get('phone')?.touched || orderForm.get('phone')?.dirty) }" formControlName="phone" id="phone" placeholder="Your Phone..." type="tel" maxlength=11 class="form-control mt-1">
+        @if (orderForm.get('phone')?.invalid && (orderForm.get('phone')?.touched || orderForm.get('phone')?.dirty)) {
+          <div class="mt-2">
+            @if (orderForm.get('phone')?.getError('required')) {
+              <p class="p-2 alert alert-danger">Phone is required</p>
+            }@else if (orderForm.get('phone')?.getError('pattern')) {
+              <p class="p-2 alert alert-danger">Must Be Egyptian Number</p>
+            }
+          </div>
+        }
+    </div>
+
+    <div class="my-1">
+      <label for="city">City :</label>
+      <input [ngClass]="{
+        'is-valid': !orderForm.get('city')?.invalid && (orderForm.get('city')?.touched || orderForm.get('city')?.dirty),
+        'is-invalid': orderForm.get('city')?.invalid && (orderForm.get('city')?.touched || orderForm.get('city')?.dirty) }" formControlName="city" id="city" placeholder="Your City..." type="text" class="form-control mt-1">
+        @if (orderForm.get('city')?.invalid && (orderForm.get('city')?.touched || orderForm.get('city')?.dirty)) {
+          <div class="mt-2">
+            @if (orderForm.get('city')?.getError('required')) {
+              <p class="p-2 alert alert-danger">City name is required</p>
+            }@else if (orderForm.get('city')?.getError('minlength')) {
+              <p class="p-2 alert alert-danger">City name is too short</p>
+            }
+          </div>
+        }
+    </div>
+
+    <button [disabled]="orderForm.invalid || isLoading" type="submit" class="btn-main mt-3 me-3">
+      @if (!isLoading){Check Out}@else{<i class="fas fa-spinner fa-spin"></i>} 
+    </button>
+
+  </form>
+
+</section>

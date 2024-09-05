@@ -1,0 +1,34 @@
+<section class="bg-main-light rounded-4 shadow p-4 my-3 px-5">
+  <h1 class="h2 text-center">{{'cart.shopcart'  | translate }}</h1>
+  <div class="d-flex justify-content-between align-items-center">
+    @if (cartDetails.totalCartPrice) {<p class="text-main">Total Cart Price : {{cartDetails.totalCartPrice  | currency : 'GBP' }}</p>}
+    @if (cartDetails.totalCartPrice){<button class="btn btn-danger" (click)="clearAllSweetAlertFunction()">Clear Cart</button>}                  <!--اللي تحت زيها بس من غير then في التايب سكريبت -->
+    <!-- @if (cartDetails.totalCartPrice) {<button [swal]="['Are You Sure?', 'Your will remove all products from your cart!', 'warning']" (confirm)="clearCart()" class="btn btn-danger">Clear Cart</button>} -->
+  </div>
+  @for (item of cartDetails.products; track item.product.id) {
+    <div class="row my-1 border-bottom align-items-center">
+      <div class="col-md-1">
+        <img class="w-100 rounded-2 mb-1" [src]="item.product.imageCover" [alt]="item.product.title">
+      </div>
+      <div class="col-md-11">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h3 class="h5 m-0">{{item.product.title}}</h3>
+            <p class="text-main my-2">{{item.price | currency : 'GBP' }}</p>
+            <i [swal]="{title:'Are You Sure?', text:'Your will remove this product from your cart!', showCancelButton: true, confirmButtonColor:'#DD6B55'}" (confirm)="removeItem(item.product.id)" class="fas fa-trash text-danger cursor-pointer"></i>
+            <!-- <i [swal]="['Are You Sure?', 'Your will remove this product from your cart!', 'warning']" (confirm)="removeItem(item.product.id)" class="fas fa-trash text-danger cursor-pointer"></i> -->
+          </div>
+          <div class="d-flex gap-3 justify-content-center align-items-center">
+            <i (click)="updateCounter(item.product.id, item.count +1)" class="fa-solid fa-plus-circle fa-xl text-main cursor-pointer"></i>
+            <strong>{{item.count}}</strong>
+            <i (click)="updateCounter(item.product.id, item.count -1)" class="fa-solid fa-minus-circle fa-xl text-main cursor-pointer"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (cartDetails.totalCartPrice) {<button [routerLink]='["/orders", cartDetails._id]' class="btn-main mt-2 me-4">Order with Card</button>}
+  @if (cartDetails.totalCartPrice) {<button [routerLink]='["/cashOrders", cartDetails._id]' class="btn-main mt-2">Order with Cash</button>}
+
+</section>
