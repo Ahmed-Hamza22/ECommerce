@@ -25,7 +25,7 @@
               <strong>{{productDetails.category.name}} → <span class="fw-lighter">{{productDetails.subcategory[0].name}}</span></strong>
               <div class="d-flex justify-content-center align-items-center">
                 <div>
-                  <i (click)="_WishlistService.favToggle(productDetails.id, $event)" [class.bg-fav]="_WishlistService.favouriteListIDs.includes(productDetails.id)" class="fa-solid fa-heart fa-2xl text-secondary cursor-pointer me-2"></i>
+                  <i (click)="_WishlistService.favToggle(productDetails.id, $event)" [class.bg-fav]="_WishlistService.favouriteListIDs?.includes(productDetails.id)" class="fa-solid fa-heart fa-2xl text-secondary cursor-pointer me-2"></i>
                 </div>
                 <img width="70px"  [src]="productDetails.brand.image" [alt]="productDetails.brand.name" [title]="productDetails.brand.name">
               </div>
