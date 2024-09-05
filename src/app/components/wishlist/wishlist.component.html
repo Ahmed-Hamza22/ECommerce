@@ -1,5 +1,9 @@
+
 <section class="bg-main-light rounded-4 shadow p-4 my-3 px-5">
   <!-- <h1 class="h2 text-center">Favourites</h1> -->
+  @if (!_WishlistService.wishList[0]) {
+    <h2 class="text-center">Your Wishlist Is Empty </h2>
+  }
   @for (fav of _WishlistService.wishList; track fav._id) {
     <div class="row my-1 border-bottom align-items-center">
       <div class="col-md-1">
