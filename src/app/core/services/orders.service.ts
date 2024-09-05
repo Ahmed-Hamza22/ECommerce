@@ -11,7 +11,7 @@ export class OrdersService {
   constructor(private _HttpClient : HttpClient) { }
 
   checkOut(CartID:string | null, shippingDetails:object):Observable<any>{
-    return this._HttpClient.post(`${environment.baseUrl}/api/v1/orders/checkout-session/${CartID}?url=https://ecommerce-peach-delta-19.vercel.app]`,
+    return this._HttpClient.post(`${environment.baseUrl}/api/v1/orders/checkout-session/${CartID}?url=https://ecommerce-peach-delta-19.vercel.app`,
       {
         "shippingAddress": shippingDetails
       }
