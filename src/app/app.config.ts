@@ -12,6 +12,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HashLocationStrategy } from '@angular/common';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -20,6 +21,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    HashLocationStrategy,
     provideRouter(routes, withViewTransitions()),
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([headersInterceptor, errorsInterceptor, loadingInterceptor])),
